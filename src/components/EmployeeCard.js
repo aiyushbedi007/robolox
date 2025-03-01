@@ -2,9 +2,11 @@ import React from 'react';
 
 const EmployeeCard = ({ employee }) => {
     return (
-        <div>
-            <h2>{employee.name}</h2>
-            <p>{employee.position}</p>
+        <div className="card mb-3">
+            <div className="card-body">
+                <h2 className="card-title">{employee.name}</h2>
+                <p className="card-text">{employee.position}</p>
+            </div>
         </div>
     );
 };

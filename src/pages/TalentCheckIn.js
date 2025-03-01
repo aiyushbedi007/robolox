@@ -2,7 +2,7 @@ import React from 'react';
 
 const TalentCheckIn = () => {
     return (
-        <div>
+        <div className="text-center">
             <h1>Talent Check-In</h1>
         </div>
     );

@@ -13,9 +13,9 @@ const InputForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" value={input} onChange={handleChange} />
-            <button type="submit">Submit</button>
+        <form onSubmit={handleSubmit} className="mb-3">
+            <input type="text" value={input} onChange={handleChange} className="form-control" />
+            <button type="submit" className="btn btn-primary mt-2">Submit</button>
         </form>
     );
 };
