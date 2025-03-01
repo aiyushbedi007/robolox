@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import TalentDirectory from './components/TalentDirectory';
@@ -29,14 +29,14 @@ function App() {
           </a>
         </header>
         <main>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/talent-directory" component={TalentDirectory} />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/talent-check-in" component={TalentCheckIn} />
-            <Route path="/login" component={Login} />
-            <Route path="/input-form" component={InputForm} />
-          </Switch>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/talent-directory" element={<TalentDirectory />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/talent-check-in" element={<TalentCheckIn />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/input-form" element={<InputForm />} />
+          </Routes>
         </main>
       </div>
     </Router>
