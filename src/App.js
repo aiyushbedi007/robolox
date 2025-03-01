@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import TalentDirectory from './components/TalentDirectory';
+import TalentDirectory from './pages/TalentDirectory';
 import InputForm from './components/InputForm';
 import Home from './pages/Home';
-import Dashboard from './pages/Dashboard';
+import TalentDirectory from './pages/TalentDirectory';
 import TalentCheckIn from './pages/TalentCheckIn';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
@@ -44,7 +44,7 @@ function App() {
                         <Route path="/talent-directory" element={<TalentDirectory />} />
                         <Route path="/dashboard" element={
                             <ProtectedRoute>
-                                <Dashboard />
+                                <TalentDirectory />
                             </ProtectedRoute>
                         } />
                         <Route path="/talent-check-in" element={
