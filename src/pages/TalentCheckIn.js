@@ -68,7 +68,7 @@ const TalentCheckIn = () => {
         }
 
         const { error } = await supabase
-            .from('Talent_CheckIns')
+            .from('Check_In')
             .insert([
                 { 
                     employee_id: selectedEmployee, 
