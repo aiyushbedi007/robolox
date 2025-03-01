@@ -7,9 +7,18 @@ const TalentCheckIn = () => {
     const [employees, setEmployees] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-    const [feedback, setFeedback] = useState('');
-    const [growthActions, setGrowthActions] = useState('');
     const [selectedEmployee, setSelectedEmployee] = useState('');
+    const [cycle, setCycle] = useState('');
+    const [highImpactTalent, setHighImpactTalent] = useState('');
+    const [needsImprovementTalent, setNeedsImprovementTalent] = useState('');
+    const [strengths, setStrengths] = useState('');
+    const [opportunityAreas, setOpportunityAreas] = useState('');
+    const [flightRisk, setFlightRisk] = useState('');
+    const [careerAspirations, setCareerAspirations] = useState('');
+    const [plannedActions, setPlannedActions] = useState('');
+    const [sessionNotes, setSessionNotes] = useState('');
+    const [actionPlanHighlights, setActionPlanHighlights] = useState('');
+    const [quarterlyProgressUpdate, setQuarterlyProgressUpdate] = useState('');
 
     useEffect(() => {
         const fetchEmployees = async () => {
@@ -53,7 +62,7 @@ const TalentCheckIn = () => {
 
     const handleCheckIn = async (e) => {
         e.preventDefault();
-        if (!selectedEmployee || !feedback || !growthActions) {
+        if (!selectedEmployee || !cycle || !highImpactTalent || !needsImprovementTalent || !strengths || !opportunityAreas || !flightRisk || !careerAspirations || !plannedActions || !sessionNotes || !actionPlanHighlights || !quarterlyProgressUpdate) {
             setError('All fields are required.');
             return;
         }
@@ -61,15 +70,37 @@ const TalentCheckIn = () => {
         const { error } = await supabase
             .from('Talent_CheckIns')
             .insert([
-                { employee_id: selectedEmployee, feedback, growth_actions: growthActions }
+                { 
+                    employee_id: selectedEmployee, 
+                    cycle, 
+                    high_impact_talent: highImpactTalent, 
+                    needs_improvement_talent: needsImprovementTalent, 
+                    strengths, 
+                    opportunity_areas: opportunityAreas, 
+                    flight_risk: flightRisk, 
+                    career_aspirations: careerAspirations, 
+                    planned_actions: plannedActions, 
+                    session_notes: sessionNotes, 
+                    action_plan_highlights: actionPlanHighlights, 
+                    quarterly_progress_update: quarterlyProgressUpdate 
+                }
             ]);
 
         if (error) {
             setError(error.message);
         } else {
-            setFeedback('');
-            setGrowthActions('');
             setSelectedEmployee('');
+            setCycle('');
+            setHighImpactTalent('');
+            setNeedsImprovementTalent('');
+            setStrengths('');
+            setOpportunityAreas('');
+            setFlightRisk('');
+            setCareerAspirations('');
+            setPlannedActions('');
+            setSessionNotes('');
+            setActionPlanHighlights('');
+            setQuarterlyProgressUpdate('');
             setError('');
             alert('Check-in submitted successfully!');
         }
@@ -98,19 +129,100 @@ const TalentCheckIn = () => {
                     </select>
                 </div>
                 <div className="mb-3">
-                    <label>Feedback:</label>
+                    <label>Cycle:</label>
+                    <input 
+                        type="text" 
+                        value={cycle} 
+                        onChange={(e) => setCycle(e.target.value)} 
+                        className="form-control"
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>High Impact Talent:</label>
+                    <input 
+                        type="text" 
+                        value={highImpactTalent} 
+                        onChange={(e) => setHighImpactTalent(e.target.value)} 
+                        className="form-control"
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>Needs Improvement Talent:</label>
+                    <input 
+                        type="text" 
+                        value={needsImprovementTalent} 
+                        onChange={(e) => setNeedsImprovementTalent(e.target.value)} 
+                        className="form-control"
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>Strengths:</label>
+                    <input 
+                        type="text" 
+                        value={strengths} 
+                        onChange={(e) => setStrengths(e.target.value)} 
+                        className="form-control"
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>Opportunity Areas:</label>
+                    <input 
+                        type="text" 
+                        value={opportunityAreas} 
+                        onChange={(e) => setOpportunityAreas(e.target.value)} 
+                        className="form-control"
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>Flight Risk:</label>
+                    <input 
+                        type="text" 
+                        value={flightRisk} 
+                        onChange={(e) => setFlightRisk(e.target.value)} 
+                        className="form-control"
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>Career Aspirations:</label>
+                    <input 
+                        type="text" 
+                        value={careerAspirations} 
+                        onChange={(e) => setCareerAspirations(e.target.value)} 
+                        className="form-control"
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>Planned Actions:</label>
+                    <input 
+                        type="text" 
+                        value={plannedActions} 
+                        onChange={(e) => setPlannedActions(e.target.value)} 
+                        className="form-control"
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>Session Notes:</label>
                     <textarea 
-                        value={feedback} 
-                        onChange={(e) => setFeedback(e.target.value)} 
+                        value={sessionNotes} 
+                        onChange={(e) => setSessionNotes(e.target.value)} 
                         className="form-control"
                         rows="3"
                     />
                 </div>
                 <div className="mb-3">
-                    <label>Growth Actions:</label>
+                    <label>Action Plan Highlights:</label>
                     <textarea 
-                        value={growthActions} 
-                        onChange={(e) => setGrowthActions(e.target.value)} 
+                        value={actionPlanHighlights} 
+                        onChange={(e) => setActionPlanHighlights(e.target.value)} 
+                        className="form-control"
+                        rows="3"
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>Quarterly Progress Update:</label>
+                    <textarea 
+                        value={quarterlyProgressUpdate} 
+                        onChange={(e) => setQuarterlyProgressUpdate(e.target.value)} 
                         className="form-control"
                         rows="3"
                     />
