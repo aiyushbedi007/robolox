@@ -11,8 +11,6 @@ const TalentDirectory = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            console.log(session);
-
             if (!session) {
                 setError('User not logged in');
                 setLoading(false);
@@ -22,7 +20,7 @@ const TalentDirectory = () => {
             const { user } = session;
             const { data: managerData, error: managerError } = await supabase
                 .from('Employee_Details')
-                .select('employee_id', 'job_profile')
+                .select('employee_id, job_profile')
                 .eq('employee_email', user.email)
                 .single();
 
@@ -31,18 +29,34 @@ const TalentDirectory = () => {
                 setLoading(false);
                 return;
             }
-            console.log('managerData', managerData);
-            // Fetch employees under the manager
-            // If the job_profile is 'CEO', fetch all employees
-            const { data: employeeData, error: employeeError } = await supabase
-                .from('Employee_Details')
-                .select('*')
-                .eq('manager_id', managerData.employee_id);
 
-            if (employeeError) {
-                setError(employeeError.message);
-                setLoading(false);
-                return;
+            // Fetch employees based on job profile
+            let employeeData;
+            if (managerData.job_profile === 'CEO') {
+                // If the job profile is 'CEO', fetch all employees
+                const { data, error } = await supabase
+                    .from('Employee_Details')
+                    .select('*');
+
+                if (error) {
+                    setError(error.message);
+                    setLoading(false);
+                    return;
+                }
+                employeeData = data;
+            } else {
+                // Fetch employees under the manager
+                const { data, error } = await supabase
+                    .from('Employee_Details')
+                    .select('*')
+                    .eq('manager_id', managerData.employee_id);
+
+                if (error) {
+                    setError(error.message);
+                    setLoading(false);
+                    return;
+                }
+                employeeData = data;
             }
 
             setEmployees(employeeData);
