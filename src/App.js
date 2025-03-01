@@ -5,7 +5,6 @@ import './App.css';
 import TalentDirectory from './pages/TalentDirectory';
 import InputForm from './components/InputForm';
 import Home from './pages/Home';
-import TalentDirectory from './pages/TalentDirectory';
 import TalentCheckIn from './pages/TalentCheckIn';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
@@ -41,8 +40,7 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<SignUp />} />
-                        <Route path="/talent-directory" element={<TalentDirectory />} />
-                        <Route path="/dashboard" element={
+                        <Route path="/talent-directory" element={
                             <ProtectedRoute>
                                 <TalentDirectory />
                             </ProtectedRoute>
