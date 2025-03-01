@@ -7,6 +7,7 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -28,8 +29,12 @@ const SignUp = () => {
 
         if (error) {
             setError(error.message);
+            setSuccess('');
         } else {
-            navigate('/dashboard');
+            setSuccess('Sign up successful! Redirecting to dashboard...');
+            setTimeout(() => {
+                navigate('/dashboard');
+            }, 2000);
         }
     };
 
@@ -37,6 +42,7 @@ const SignUp = () => {
         <div className="login-container">
             <h1>Sign Up Page</h1>
             {error && <p className="error-message">{error}</p>}
+            {success && <p className="success-message">{success}</p>}
             <form className="login-form" onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label>Email:</label>
