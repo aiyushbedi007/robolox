@@ -6,18 +6,23 @@ import './Login.css';
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!email || !password) {
+        if (!email || !password || !confirmPassword) {
             setError('Email and password are required.');
             return;
         }
         if (!/\S+@\S+\.\S+/.test(email)) {
             setError('Email is invalid.');
+            return;
+        }
+        if (password !== confirmPassword) {
+            setError('Passwords do not match.');
             return;
         }
         setError('');
@@ -59,6 +64,15 @@ const SignUp = () => {
                         type="password" 
                         value={password} 
                         onChange={(e) => setPassword(e.target.value)} 
+                        className="form-control"
+                    />
+                </div>
+                <div className="mb-3">
+                    <label>Confirm Password:</label>
+                    <input 
+                        type="password" 
+                        value={confirmPassword} 
+                        onChange={(e) => setConfirmPassword(e.target.value)} 
                         className="form-control"
                     />
                 </div>
