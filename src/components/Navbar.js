@@ -31,9 +31,6 @@ const Navbar = () => {
                                     <Link className="nav-link" to="/talent-check-in">Talent Check-In</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/input-form">Input Form</Link>
-                                </li>
-                                <li className="nav-item">
                                     <Link className="nav-link" to="/" onClick={handleLogout}>Logout</Link>
                                 </li>
                             </>

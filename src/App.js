@@ -33,28 +33,25 @@ function App() {
         <AuthProvider>
             <Router>
                 <div className="App">
-                    <Navbar />
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<SignUp />} />
                         <Route path="/talent-directory" element={
                             <ProtectedRoute>
+                                <Navbar />
                                 <TalentDirectory />
                             </ProtectedRoute>
                         } />
                         <Route path="/talent-check-in" element={
-                            <ProtectedRoute role="manager">
-                                <TalentCheckIn />
-                            </ProtectedRoute>
-                        } />
-                        <Route path="/input-form" element={
                             <ProtectedRoute>
-                                <InputForm />
+                                <Navbar />
+                                <TalentCheckIn />
                             </ProtectedRoute>
                         } />
                         <Route path="/employee-details/:employeeId" element={
                             <ProtectedRoute>
+                                <Navbar />
                                 <EmployeeDetails />
                             </ProtectedRoute>
                         } />
