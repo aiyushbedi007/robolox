@@ -19,15 +19,20 @@ const Dashboard = () => {
             }
 
             const employeeDetails = await Promise.all(employeeData.map(async (employee) => {
-                const { data: performanceData } = await supabase
+                const { data: performanceData, error: performanceError } = await supabase
                     .from('Performance')
                     .select('*')
                     .eq('employee_id', employee.employee_id);
 
-                const { data: checkInData } = await supabase
+                const { data: checkInData, error: checkInError } = await supabase
                     .from('Check_In')
                     .select('*')
                     .eq('employee_id', employee.employee_id);
+
+                if (performanceError || checkInError) {
+                    setError(performanceError?.message || checkInError?.message);
+                    return null;
+                }
 
                 return {
                     ...employee,
@@ -36,7 +41,7 @@ const Dashboard = () => {
                 };
             }));
 
-            setEmployees(employeeDetails);
+            setEmployees(employeeDetails.filter(Boolean)); // Filter out null values
             setLoading(false);
         };
 
