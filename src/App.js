@@ -10,7 +10,7 @@ import TalentCheckIn from './pages/TalentCheckIn';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Navbar from './components/Navbar';
-import { Outlet } from 'react-router-dom';
+import EmployeeDetails from './pages/EmployeeDetails';
 
 function App() {
   return (
@@ -21,12 +21,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route element={<Outlet />}>
-            <Route path="/talent-directory" element={<TalentDirectory />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/talent-check-in" element={<TalentCheckIn />} />
-            <Route path="/input-form" element={<InputForm />} />
-          </Route>
+          <Route path="/talent-directory" element={<TalentDirectory />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/talent-check-in" element={<TalentCheckIn />} />
+          <Route path="/input-form" element={<InputForm />} />
+          <Route path="/employee-details/:employeeId" element={<EmployeeDetails />} />
         </Routes>
       </div>
     </Router>
