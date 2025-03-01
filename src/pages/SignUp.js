@@ -40,9 +40,9 @@ const SignUp = () => {
             setError(error.message);
             setSuccess('');
         } else {
-            setSuccess('Sign up successful! Redirecting to dashboard...');
+            setSuccess('Sign up successful! Redirecting to talent directory...');
             setTimeout(() => {
-                navigate('/dashboard');
+                navigate('/talent-directory');
             }, 2000);
         }
     };

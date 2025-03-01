@@ -17,8 +17,6 @@ const ProtectedRoute = ({ children, role }) => {
 
     if (loading) return <div>Loading...</div>;
 
-    console.log('session', session);
-
     if (!session) {
         return <Navigate to="/login" />;
     }

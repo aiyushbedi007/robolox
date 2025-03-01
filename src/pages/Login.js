@@ -30,7 +30,7 @@ const Login = () => {
         if (error) {
             setError(error.message);
         } else {
-            navigate('/dashboard');
+            navigate('/talent-directory');
         }
     };
 
