@@ -70,7 +70,7 @@ const Dashboard = () => {
                                                 Performance Records
                                             </button>
                                         </h2>
-                                        <div id={`collapsePerformance-${employee.employee_id}`} className="accordion-collapse collapse show" aria-labelledby={`headingPerformance-${employee.employee_id}`} data-bs-parent={`#accordion-${employee.employee_id}`}>
+                                        <div id={`collapsePerformance-${employee.employee_id}`} className="accordion-collapse collapse" aria-labelledby={`headingPerformance-${employee.employee_id}`} data-bs-parent={`#accordion-${employee.employee_id}`}>
                                             <div className="accordion-body">
                                                 {employee.performance.map((performance) => (
                                                     <p key={performance.Cycle}><strong>Cycle:</strong> {performance.Cycle}, <strong>Rating:</strong> {performance.Rating}</p>
