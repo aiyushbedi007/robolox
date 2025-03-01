@@ -128,6 +128,7 @@ const TalentCheckIn = () => {
                         ))}
                     </select>
                 </div>
+                {/* Cycle field has Quarter and Year in a Dropdown e.g. Q4 2024 */}
                 <div className="mb-3">
                     <label>Cycle:</label>
                     <input 
@@ -137,6 +138,7 @@ const TalentCheckIn = () => {
                         className="form-control"
                     />
                 </div>
+                {/* High Impact Talent is Dropdown with Yes/No */}
                 <div className="mb-3">
                     <label>High Impact Talent:</label>
                     <input 
@@ -146,6 +148,7 @@ const TalentCheckIn = () => {
                         className="form-control"
                     />
                 </div>
+                {/* Needs Improvement Talent is Dropdown with Yes/No */}
                 <div className="mb-3">
                     <label>Needs Improvement Talent:</label>
                     <input 
