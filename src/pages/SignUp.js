@@ -27,9 +27,13 @@ const SignUp = () => {
         }
         setError('');
 
-        const { error } = await supabase.auth.signUp({
+        const { user, error } = await supabase.auth.signUp({
             email,
             password,
+        }, {
+            data: {
+                role: 'manager'
+            }
         });
 
         if (error) {
