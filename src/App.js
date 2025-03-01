@@ -10,11 +10,13 @@ import Dashboard from './pages/Dashboard';
 import TalentCheckIn from './pages/TalentCheckIn';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <Navbar />
         <main className="container">
           <Routes>
             <Route path="/" element={<Home />} />
