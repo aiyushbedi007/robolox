@@ -61,7 +61,7 @@ const EmployeeDetails = () => {
                     <h5 className="card-title">Job Profile: {employee.job_profile}</h5>
                     
                     <h3>Performance Records</h3>
-                    <table className="table">
+                    <table className="table table-striped">
                         <thead>
                             <tr>
                                 <th>Cycle</th>
@@ -79,7 +79,7 @@ const EmployeeDetails = () => {
                     </table>
 
                     <h3>Check-In Data</h3>
-                    <table className="table">
+                    <table className="table table-striped">
                         <thead>
                             <tr>
                                 <th>Cycle</th>
