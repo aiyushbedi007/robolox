@@ -181,12 +181,17 @@ const TalentCheckIn = () => {
                 </div>
                 <div className="mb-3">
                     <label>Flight Risk:</label>
-                    <input 
-                        type="text" 
+                    <select 
                         value={flightRisk} 
                         onChange={(e) => setFlightRisk(e.target.value)} 
                         className="form-control"
-                    />
+                    >
+                        <option value="">Select Flight Risk Level</option>
+                        <option value="No">No</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
                 </div>
                 <div className="mb-3">
                     <label>Career Aspirations:</label>
