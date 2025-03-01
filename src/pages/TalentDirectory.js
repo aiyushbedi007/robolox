@@ -22,7 +22,7 @@ const TalentDirectory = () => {
             const { user } = session;
             const { data: managerData, error: managerError } = await supabase
                 .from('Employee_Details')
-                .select('employee_id')
+                .select('employee_id', 'job_profile')
                 .eq('employee_email', user.email)
                 .single();
 
@@ -31,7 +31,9 @@ const TalentDirectory = () => {
                 setLoading(false);
                 return;
             }
-
+            console.log('managerData', managerData);
+            // Fetch employees under the manager
+            // If the job_profile is 'CEO', fetch all employees
             const { data: employeeData, error: employeeError } = await supabase
                 .from('Employee_Details')
                 .select('*')
