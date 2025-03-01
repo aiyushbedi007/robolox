@@ -18,8 +18,6 @@ const Dashboard = () => {
                 return;
             }
 
-            console.log(employeeData);
-
             const employeeDetails = await Promise.all(employeeData.map(async (employee) => {
                 const { data: performanceData, error: performanceError } = await supabase
                     .from('Performance')
@@ -46,14 +44,12 @@ const Dashboard = () => {
             setEmployees(employeeDetails.filter(Boolean)); // Filter out null values
             setLoading(false);
         };
-        console.log('fetching');
+
         fetchData();
     }, []);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
-
-    console.log('employees', employees);
 
     return (
         <div className="container mt-5">

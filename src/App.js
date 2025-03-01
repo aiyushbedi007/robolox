@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import TalentDirectory from './components/TalentDirectory';
-import EmployeeCard from './components/EmployeeCard';
 import InputForm from './components/InputForm';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
@@ -11,6 +10,7 @@ import TalentCheckIn from './pages/TalentCheckIn';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Navbar from './components/Navbar';
+import { Outlet } from 'react-router-dom';
 
 function App() {
   return (
