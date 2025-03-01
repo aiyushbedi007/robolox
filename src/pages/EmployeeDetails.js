@@ -60,48 +60,59 @@ const EmployeeDetails = () => {
                     <h5 className="card-title">Email: {employee.employee_email}</h5>
                     <h5 className="card-title">Job Profile: {employee.job_profile}</h5>
                     
-                    <div className="accordion" id={`accordion-${employee.employee_id}`}>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id={`headingPerformance-${employee.employee_id}`}>
-                                <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={`#collapsePerformance-${employee.employee_id}`} aria-expanded="true" aria-controls={`collapsePerformance-${employee.employee_id}`}>
-                                    Performance Records
-                                </button>
-                            </h2>
-                            <div id={`collapsePerformance-${employee.employee_id}`} className="accordion-collapse collapse show" aria-labelledby={`headingPerformance-${employee.employee_id}`} data-bs-parent={`#accordion-${employee.employee_id}`}>
-                                <div className="accordion-body">
-                                    {employee.performance.map((performance) => (
-                                        <p key={performance.Cycle}><strong>Cycle:</strong> {performance.Cycle}, <strong>Rating:</strong> {performance.Rating}</p>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id={`headingCheckIn-${employee.employee_id}`}>
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#collapseCheckIn-${employee.employee_id}`} aria-expanded="false" aria-controls={`collapseCheckIn-${employee.employee_id}`}>
-                                    Check-In Data
-                                </button>
-                            </h2>
-                            <div id={`collapseCheckIn-${employee.employee_id}`} className="accordion-collapse collapse" aria-labelledby={`headingCheckIn-${employee.employee_id}`} data-bs-parent={`#accordion-${employee.employee_id}`}>
-                                <div className="accordion-body">
-                                    {employee.checkIn.map((checkIn) => (
-                                        <div key={checkIn.cycle}>
-                                            <p><strong>Cycle:</strong> {checkIn.cycle}</p>
-                                            <p><strong>High Impact Talent:</strong> {checkIn.high_impact_talent}</p>
-                                            <p><strong>Needs Improvement Talent:</strong> {checkIn.needs_improvement_talent}</p>
-                                            <p><strong>Strengths:</strong> {checkIn.strengths}</p>
-                                            <p><strong>Opportunity Areas:</strong> {checkIn.opportunity_areas}</p>
-                                            <p><strong>Flight Risk:</strong> {checkIn.flight_risk}</p>
-                                            <p><strong>Career Aspirations:</strong> {checkIn.career_aspirations}</p>
-                                            <p><strong>Planned Actions:</strong> {checkIn.planned_actions}</p>
-                                            <p><strong>Session Notes:</strong> {checkIn.session_notes}</p>
-                                            <p><strong>Action Plan Highlights:</strong> {checkIn.action_plan_highlights}</p>
-                                            <p><strong>Quarterly Progress Update:</strong> {checkIn.quarterly_progress_update}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h3>Performance Records</h3>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Cycle</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {employee.performance.map((performance) => (
+                                <tr key={performance.Cycle}>
+                                    <td>{performance.Cycle}</td>
+                                    <td>{performance.Rating}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+
+                    <h3>Check-In Data</h3>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Cycle</th>
+                                <th>High Impact Talent</th>
+                                <th>Needs Improvement Talent</th>
+                                <th>Strengths</th>
+                                <th>Opportunity Areas</th>
+                                <th>Flight Risk</th>
+                                <th>Career Aspirations</th>
+                                <th>Planned Actions</th>
+                                <th>Session Notes</th>
+                                <th>Action Plan Highlights</th>
+                                <th>Quarterly Progress Update</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {employee.checkIn.map((checkIn) => (
+                                <tr key={checkIn.cycle}>
+                                    <td>{checkIn.cycle}</td>
+                                    <td>{checkIn.high_impact_talent}</td>
+                                    <td>{checkIn.needs_improvement_talent}</td>
+                                    <td>{checkIn.strengths}</td>
+                                    <td>{checkIn.opportunity_areas}</td>
+                                    <td>{checkIn.flight_risk}</td>
+                                    <td>{checkIn.career_aspirations}</td>
+                                    <td>{checkIn.planned_actions}</td>
+                                    <td>{checkIn.session_notes}</td>
+                                    <td>{checkIn.action_plan_highlights}</td>
+                                    <td>{checkIn.quarterly_progress_update}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
