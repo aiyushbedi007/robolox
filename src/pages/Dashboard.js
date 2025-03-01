@@ -1,17 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
+import { useSession } from '@supabase/auth-helpers-react';
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
+    const session = useSession();
     const [employees, setEmployees] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
+            if (!session) {
+                setError('User not logged in');
+                setLoading(false);
+                return;
+            }
+
+            const { user } = session;
+            const { data: managerData, error: managerError } = await supabase
+                .from('Employee_Details')
+                .select('employee_id')
+                .eq('employee_email', user.email)
+                .single();
+
+            if (managerError) {
+                setError(managerError.message);
+                setLoading(false);
+                return;
+            }
+
             const { data: employeeData, error: employeeError } = await supabase
                 .from('Employee_Details')
-                .select('*');
+                .select('*')
+                .eq('manager_id', managerData.employee_id);
 
             if (employeeError) {
                 setError(employeeError.message);
@@ -24,7 +46,7 @@ const Dashboard = () => {
         };
 
         fetchData();
-    }, []);
+    }, [session]);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
