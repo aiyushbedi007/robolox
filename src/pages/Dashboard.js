@@ -9,7 +9,7 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             const { data: employeeData, error: employeeError } = await supabase
-                .from('Employee_details')
+                .from('Employee_Details')
                 .select('*');
 
             if (employeeError) {
@@ -64,7 +64,7 @@ const Dashboard = () => {
                                 <p className="card-text"><strong>Job Profile:</strong> {employee.job_profile}</p>
                                 <h6>Performance Records:</h6>
                                 {employee.performance.map((performance) => (
-                                    <p key={performance.cycle}><strong>Cycle:</strong> {performance.cycle}, <strong>Rating:</strong> {performance.Rating}</p>
+                                    <p key={performance.Cycle}><strong>Cycle:</strong> {performance.Cycle}, <strong>Rating:</strong> {performance.Rating}</p>
                                 ))}
                                 <h6>Check-In Data:</h6>
                                 {employee.checkIn.map((checkIn) => (
