@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
@@ -24,6 +25,7 @@ const Home = () => {
             <p>
                 The goal is to ensure meaningful conversations between Managers and CEO while maintaining a streamlined and secure process for tracking and analyzing talent data over time.
             </p>
+            <Link to="/login" className="btn btn-primary mt-4">Login</Link>
         </div>
     );
 };
