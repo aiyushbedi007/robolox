@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import TalentDirectory from './components/TalentDirectory';
@@ -11,25 +11,60 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Navbar from './components/Navbar';
 import EmployeeDetails from './pages/EmployeeDetails';
+import { AuthProvider, useAuth } from './AuthContext';
+
+const ProtectedRoute = ({ children, role }) => {
+    const { session, loading } = useAuth();
+
+    if (loading) return <div>Loading...</div>;
+
+    if (!session) {
+        return <Navigate to="/login" />;
+    }
+
+    if (role && session.user.role !== role) {
+        return <Navigate to="/" />;
+    }
+
+    return children;
+};
 
 function App() {
-  return (
-    <Router>
-      <div className="App">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/talent-directory" element={<TalentDirectory />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/talent-check-in" element={<TalentCheckIn />} />
-          <Route path="/input-form" element={<InputForm />} />
-          <Route path="/employee-details/:employeeId" element={<EmployeeDetails />} />
-        </Routes>
-      </div>
-    </Router>
-  );
+    return (
+        <AuthProvider>
+            <Router>
+                <div className="App">
+                    <Navbar />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/signup" element={<SignUp />} />
+                        <Route path="/talent-directory" element={<TalentDirectory />} />
+                        <Route path="/dashboard" element={
+                            <ProtectedRoute>
+                                <Dashboard />
+                            </ProtectedRoute>
+                        } />
+                        <Route path="/talent-check-in" element={
+                            <ProtectedRoute role="manager">
+                                <TalentCheckIn />
+                            </ProtectedRoute>
+                        } />
+                        <Route path="/input-form" element={
+                            <ProtectedRoute>
+                                <InputForm />
+                            </ProtectedRoute>
+                        } />
+                        <Route path="/employee-details/:employeeId" element={
+                            <ProtectedRoute>
+                                <EmployeeDetails />
+                            </ProtectedRoute>
+                        } />
+                    </Routes>
+                </div>
+            </Router>
+        </AuthProvider>
+    );
 }
 
 export default App;
