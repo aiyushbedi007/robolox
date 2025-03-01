@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Login.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -20,10 +21,10 @@ const Login = () => {
     };
 
     return (
-        <div>
+        <div className="login-container">
             <h1>Login Page</h1>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <form onSubmit={handleSubmit}>
+            {error && <p className="error-message">{error}</p>}
+            <form className="login-form" onSubmit={handleSubmit}>
                 <div>
                     <label>Email:</label>
                     <input 
