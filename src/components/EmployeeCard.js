@@ -1,4 +1,5 @@
 import React from 'react';
+import './EmployeeCard.css';
 
 const EmployeeCard = ({ employee }) => {
     return (
