@@ -20,6 +20,11 @@ const TalentCheckIn = () => {
     const [actionPlanHighlights, setActionPlanHighlights] = useState('');
     const [quarterlyProgressUpdate, setQuarterlyProgressUpdate] = useState('');
 
+    const quarters = [
+        'Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2024',
+        'Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025',
+    ];
+
     useEffect(() => {
         const fetchEmployees = async () => {
             if (!session) {
@@ -130,12 +135,18 @@ const TalentCheckIn = () => {
                 </div>
                 <div className="mb-3">
                     <label>Cycle:</label>
-                    <input 
-                        type="text" 
+                    <select 
                         value={cycle} 
                         onChange={(e) => setCycle(e.target.value)} 
                         className="form-control"
-                    />
+                    >
+                        <option value="">Select a cycle</option>
+                        {quarters.map((quarter) => (
+                            <option key={quarter} value={quarter}>
+                                {quarter}
+                            </option>
+                        ))}
+                    </select>
                 </div>
                 <div className="mb-3">
                     <label>High Impact Talent:</label>

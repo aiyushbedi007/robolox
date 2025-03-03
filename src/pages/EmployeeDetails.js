@@ -79,40 +79,42 @@ const EmployeeDetails = () => {
                     </table>
 
                     <h3>Check-In Data</h3>
-                    <table className="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Cycle</th>
-                                <th>High Impact Talent</th>
-                                <th>Needs Improvement Talent</th>
-                                <th>Strengths</th>
-                                <th>Opportunity Areas</th>
-                                <th>Flight Risk</th>
-                                <th>Career Aspirations</th>
-                                <th>Planned Actions</th>
-                                <th>Session Notes</th>
-                                <th>Action Plan Highlights</th>
-                                <th>Quarterly Progress Update</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {employee.checkIn.map((checkIn) => (
-                                <tr key={checkIn.cycle}>
-                                    <td>{checkIn.cycle}</td>
-                                    <td>{checkIn.high_impact_talent}</td>
-                                    <td>{checkIn.needs_improvement_talent}</td>
-                                    <td>{checkIn.strengths}</td>
-                                    <td>{checkIn.opportunity_areas}</td>
-                                    <td>{checkIn.flight_risk}</td>
-                                    <td>{checkIn.career_aspirations}</td>
-                                    <td>{checkIn.planned_actions}</td>
-                                    <td>{checkIn.session_notes}</td>
-                                    <td>{checkIn.action_plan_highlights}</td>
-                                    <td>{checkIn.quarterly_progress_update}</td>
+                    <div className="table-responsive">
+                        <table className="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th className="text-center">Cycle</th>
+                                    <th className="text-center">High Impact Talent</th>
+                                    <th className="text-center">Needs Improvement Talent</th>
+                                    <th className="text-center">Strengths</th>
+                                    <th className="text-center">Opportunity Areas</th>
+                                    <th className="text-center">Flight Risk</th>
+                                    <th className="text-center">Career Aspirations</th>
+                                    <th className="text-center">Planned Actions</th>
+                                    <th className="text-center">Session Notes</th>
+                                    <th className="text-center">Action Plan Highlights</th>
+                                    <th className="text-center">Quarterly Progress Update</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {employee.checkIn.map((checkIn) => (
+                                    <tr key={checkIn.cycle}>
+                                        <td>{checkIn.cycle}</td>
+                                        <td>{checkIn.high_impact_talent}</td>
+                                        <td>{checkIn.needs_improvement_talent}</td>
+                                        <td>{checkIn.strengths}</td>
+                                        <td>{checkIn.opportunity_areas}</td>
+                                        <td>{checkIn.flight_risk}</td>
+                                        <td>{checkIn.career_aspirations}</td>
+                                        <td>{checkIn.planned_actions}</td>
+                                        <td>{checkIn.session_notes}</td>
+                                        <td>{checkIn.action_plan_highlights}</td>
+                                        <td>{checkIn.quarterly_progress_update}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
