@@ -20,7 +20,7 @@ const Navbar = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
+                    <ul className="navbar-nav me-auto">
                         {session ? (
                             <>
                                 <li className="nav-item">
@@ -28,9 +28,6 @@ const Navbar = () => {
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/talent-check-in">Talent Check-In</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/" onClick={handleLogout}>Logout</Link>
                                 </li>
                             </>
                         ) : (
@@ -44,6 +41,9 @@ const Navbar = () => {
                             </>
                         )}
                     </ul>
+                    {session && (
+                        <button className="btn btn-outline-danger" onClick={handleLogout}>Logout</button>
+                    )}
                 </div>
             </div>
         </nav>

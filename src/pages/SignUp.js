@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import './Login.css';
 
@@ -82,6 +82,9 @@ const SignUp = () => {
                 </div>
                 <button type="submit" className="btn btn-primary">Sign Up</button>
             </form>
+            <p className="mt-3">
+                Already have an account? <Link to="/login">Login here</Link>
+            </p>
         </div>
     );
 };
