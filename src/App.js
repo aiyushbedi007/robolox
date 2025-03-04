@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import TalentDirectory from './pages/TalentDirectory';
-import InputForm from './components/InputForm';
 import Home from './pages/Home';
 import TalentCheckIn from './pages/TalentCheckIn';
 import Login from './pages/Login';
